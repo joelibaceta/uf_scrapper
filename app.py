@@ -20,21 +20,13 @@ def get_uf_value():
     uf_scrapper = UFScrapper()
 
     try:
-
         value = uf_scrapper.get_uf_value(year, month, day)
-        
-        return jsonify({
-            "status": "success",
-            "data": {
-                "uf_value": value
-            }
-        })
-    
+
+        return jsonify({"status": "success", "data": {"uf_value": value}})
+
     except Exception as e:
-        return jsonify({
-            "status": "error",
-            "message": str(e)
-        })
+        return jsonify({"status": "error", "message": str(e)})
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
