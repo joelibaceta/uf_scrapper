@@ -25,3 +25,12 @@ The API will return a JSON object with the UF value for the specified date. If t
 }
 ```
 
+### Running with Docker
+
+```
+docker build -t uf_flask-app . 
+```
+
+```
+docker run -it -p 5000:5000 -d uf_flask-app
+```
