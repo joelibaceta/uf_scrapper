@@ -2,7 +2,7 @@
 
 import requests
 import re
-from api.lib.uf_scrapper import UFScrapper
+from .lib.uf_scrapper import UFScrapper
 
 from flask import Flask
 from flask import Flask, request, jsonify
