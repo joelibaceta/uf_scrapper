@@ -2,16 +2,18 @@
 
 import requests
 import re
-from uf_scrapper.lib.uf_scrapper import UFScrapper
+from lib.uf_scrapper import UFScrapper
 
 from flask import Flask
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+
 @app.route("/health")
 def health():
     return "OK"
+
 
 @app.route("/uf", methods=["GET"])
 def get_uf_value():

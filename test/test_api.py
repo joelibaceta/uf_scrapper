@@ -1,5 +1,5 @@
 import pytest
-from uf_scrapper.app import app
+from ..app import app
 
 
 def test_get_uf_api():
