@@ -5,6 +5,9 @@ import re
 class UFScrapper:
     """This class is in charge of scrapping the UF value from the SII website"""
 
+    # Using a really simple cache to avoid scrapping the same value multiple times
+    cache = {}
+
     def __init__(self) -> None:
         self.base_url = "https://www.sii.cl/valores_y_fechas/uf"
 
@@ -12,6 +15,9 @@ class UFScrapper:
         """Returns the UF value for the given date"""
 
         self.__validate_requested_date(year, month, day)
+
+        if f"{year}-{month}-{day}" in self.cache:  # return cached value if exists
+            return UFScrapper.cache[f"{year}-{month}-{day}"]
 
         url = f"{self.base_url}/uf{year}.htm"
         response = requests.get(url)
@@ -22,7 +28,9 @@ class UFScrapper:
                 r'<table.+table_export"[^>]+>(.*?)<\/table>', re.DOTALL
             )
             match = match_pattern.findall(raw_html)[0]
-            return self.__parse_table_section(match, month, day)
+            value = self.__parse_table_section(match, month, day)
+            UFScrapper.cache[f"{year}-{month}-{day}"] = value
+            return value
         else:
             raise Exception("Error while scrapping the UF value")
 

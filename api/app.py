@@ -23,7 +23,6 @@ def health():
 
 @app.route("/uf", methods=["GET"])
 def get_uf_value():
-    print(request.args)
     year = int(request.args.get("year"))
     month = int(request.args.get("month"))
     day = int(request.args.get("day"))
