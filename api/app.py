@@ -4,7 +4,6 @@ import requests
 import re
 from .lib.uf_scrapper import UFScrapper
 
-from flask import Flask
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
