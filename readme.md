@@ -32,5 +32,5 @@ docker build -t uf_flask-app .
 ```
 
 ```
-docker run -it -p 5000:5000 -d uf_flask-app --name uf_flask-container
+docker run -it --rm -p 5000:5000 --name uf_flask-container -d uf_flask-app 
 ```
